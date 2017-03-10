@@ -9,10 +9,10 @@ use App\Core\Dispatcher\Router;
  * realpath(__DIR__ . '/../') => "/var/www/MyFramework"
  */
 
-App::bind('database_config', require "../core/config/database.php");
+App::bind('database_config', require __DIR__ . "/../config/database.php");
 
 App::bind('database', new QueryBuilder(
     Connection::make(App::get('database_config'))
 ));
 
-return Router::load("../bootstrap/routes.php");
+return Router::load(__DIR__ .  "/../app/Http/routes.php");

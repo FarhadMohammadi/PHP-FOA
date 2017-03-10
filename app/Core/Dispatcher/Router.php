@@ -17,6 +17,7 @@ class Router
 
     /**
      * @param $file
+     * @return static
      */
     public static function load($file)
     {
@@ -56,35 +57,40 @@ class Router
     /**
      * @param $uri
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function direct($uri, $requestType)
     {
         if (array_key_exists($uri, $this->routes[$requestType])) {
             try {
                 return $this->callAction(...explode('@', $this->routes[$requestType][$uri]));
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 die($e->getMessage());
             }
         }
 
-        throw new Exception("no route defined for this URI");
+        throw new \Exception("no route defined for this URI");
     }
 
     /**
+     * @param $controller
+     * @param $action
      * @return mixed
+     * @throws \Exception
      */
     protected function callAction($controller, $action)
     {
-        if (class_exists($controller)) {
+        $baseControllerPath = "App\\Http\\Controllers\\" . $controller;
 
-            if (method_exists($controller, $action)) {
-                return (new $controller)->$action();
+        if (class_exists($baseControllerPath)) {
+
+            if (method_exists($baseControllerPath, $action)) {
+                return (new $baseControllerPath)->$action();
             }
 
-            throw new Exception("{$controller} does not have a {$action} method.");
+            throw new \Exception("{$controller} does not have a {$action} method.");
         }
 
-        throw new Exception("The {$controller} class does not exists.");
+        throw new \Exception("The {$controller} class does not exists.");
     }
 }
