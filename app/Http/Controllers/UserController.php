@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\App;
+use App\Core\Dispatcher\Request;
+use App\Core\Authentication\Auth;
+use Carbon\Carbon;
+
 /**
  * Class UserController
  */
@@ -58,13 +63,20 @@ class UserController
      */
     public function store()
     {
-        if (!Request::has('fullname')) {
-            $errors = "You Should Enter Your FullName.";
+        if (
+            !Request::has('user_full_name')
+            || !Request::has('user_email')
+        ) {
+            $errors = "You Should Enter Your FullName Or Email.";
 
             return view('users.register', compact('errors'));
         }
 
-        App::get('database')->insert('users', ['fullname' => Request::get('fullname')]);
+        App::get('database')->insert('users', [
+            'user_full_name' => Request::get('user_full_name'),
+            'user_email'     => Request::get('user_email'),
+            'created_at'     => Carbon::now()
+        ]);
 
         return redirect('users');
     }

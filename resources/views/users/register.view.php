@@ -9,7 +9,14 @@
     <?php endif; ?>
     <div class="container">
         <form method="POST" action="register">
-            <input type="text" name="fullname" id="fullname">
+          <div>
+            <span>Enter You'r Full Name</span>
+            <input type="text" name="user_full_name" id="user_full_name">
+          </div>
+          <div>
+            <span>Enter You'r Email</span>
+            <input type="text" name="user_email" id="user_email">
+          </div>
             <input type="submit" value="Register">
         </form>
     </div>
