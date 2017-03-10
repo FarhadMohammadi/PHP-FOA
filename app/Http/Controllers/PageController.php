@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Acme\Reporting\Output\HtmlOutput;
+use App\Acme\Reporting\SalesReporter;
+use App\Repositories\SaleRepository;
+use Carbon\Carbon;
+
 /**
  * Class PageController
  * @package App\Http\Controllers
@@ -13,7 +18,14 @@ class PageController
      */
     public function index()
     {
-        return view('home');
+        $report = new SalesReporter(new SaleRepository());
+
+        $begin = Carbon::now()->subDay(10);
+        $end   = Carbon::now();
+
+        $result = $report->between($begin, $end, new HtmlOutput());
+
+        return view('home', compact('result'));
     }
 
     /**
