@@ -48,4 +48,13 @@ class QueryBuilder
 
         $query->execute();
     }
+
+    public function allRowsCountFrom($table)
+    {
+        $query = $this->pdo->prepare("SELECT COUNT(1) FROM {$table}");
+
+        $query->execute();
+
+        return $query->fetch(\PDO::FETCH_COLUMN);
+    }
 }
