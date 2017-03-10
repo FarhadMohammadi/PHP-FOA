@@ -30,8 +30,11 @@ class QueryBuilder
         );
 
         try {
+
             $query = $this->pdo->prepare($sql);
+
             $query->execute($paramerts);
+
         } catch (\Exception $e) {
             die("Wooops, sorry this is some thing wrong");
         }

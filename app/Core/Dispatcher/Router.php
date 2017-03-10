@@ -56,14 +56,18 @@ class Router
 
     /**
      * @param $uri
+     * @param $requestType
      * @return mixed
      * @throws \Exception
      */
     public function direct($uri, $requestType)
     {
         if (array_key_exists($uri, $this->routes[$requestType])) {
+
             try {
+
                 return $this->callAction(...explode('@', $this->routes[$requestType][$uri]));
+
             } catch (\Exception $e) {
                 die($e->getMessage());
             }
@@ -80,12 +84,12 @@ class Router
      */
     protected function callAction($controller, $action)
     {
-        $baseControllerPath = "App\\Http\\Controllers\\" . $controller;
+        $controller = "App\\Http\\Controllers\\" . $controller;
 
-        if (class_exists($baseControllerPath)) {
+        if (class_exists($controller)) {
 
-            if (method_exists($baseControllerPath, $action)) {
-                return (new $baseControllerPath)->$action();
+            if (method_exists($controller, $action)) {
+                return (new $controller)->$action();
             }
 
             throw new \Exception("{$controller} does not have a {$action} method.");
