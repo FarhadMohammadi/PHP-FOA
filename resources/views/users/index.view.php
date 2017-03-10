@@ -5,9 +5,9 @@
         <ul class="userList">
             <?php foreach ($users as $user): ?>
                 <li>
-                    <?= $user->fullname; ?>
+                    <?= $user->user_full_name; ?>
                     <span class="pull-right">
-                        <a class="delete" href="/users/delete?id=<?= $user->id ?>">X</a>
+                        <a class="delete" href="/users/delete?id=<?= $user->user_id ?>">X</a>
                     </span>
                 </li>
             <?php endforeach; ?>

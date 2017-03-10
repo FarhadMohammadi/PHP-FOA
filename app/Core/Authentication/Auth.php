@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core\Authentication;
+
 class Auth
 {
     public static function attempt(array $cridentials)

@@ -1,10 +1,9 @@
 <?php
 
 use App\Core\App;
-use Illuminate\Support\Debug\Dumper;
 
 if (!function_exists('response')) {
-    function response($name, $data = [])
+    function view($name, $data = [])
     {
         extract($data);
 
@@ -42,7 +41,7 @@ if (!function_exists('dd')) {
     function dd()
     {
         array_map(function ($x) {
-            (new Dumper())->dump($x);
+            var_dump($x);
         }, func_get_args());
 
         die(1);
