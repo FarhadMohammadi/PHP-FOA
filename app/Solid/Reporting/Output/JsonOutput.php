@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Acme\Reporting\Output;
+namespace App\Solid\Reporting\Output;
 
 
-class XmlOutput implements SalesOutputInterface
+class JsonOutput implements SalesOutputInterface
 {
     /**
      * @param string $sales
@@ -11,6 +11,6 @@ class XmlOutput implements SalesOutputInterface
      */
     public function output(string $sales)
     {
-        return $sales;
+        return json_decode($sales);
     }
 }

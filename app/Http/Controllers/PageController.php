@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Acme\Reporting\Output\HtmlOutput;
-use App\Acme\Reporting\SalesReporter;
+use App\Solid\Reporting\Output\HtmlOutput;
+use App\Solid\Reporting\SalesReporter;
 use App\Repositories\SaleRepository;
+use App\Solid\Shapes\AreaCalculator;
+use App\Solid\Shapes\Circle;
+use App\Solid\Shapes\Cube;
+use App\Solid\Shapes\Square;
+use App\Solid\Shapes\Trapezius;
+use App\Solid\Shapes\Triangle;
 use Carbon\Carbon;
 
 /**
@@ -23,9 +29,17 @@ class PageController
         $begin = Carbon::now()->subDay(10);
         $end   = Carbon::now();
 
-        $result = $report->between($begin, $end, new HtmlOutput());
+        $saleReport = $report->between($begin, $end, new HtmlOutput());
 
-        return view('home', compact('result'));
+        $shapes[] = new Square(3, 4);
+        $shapes[] = new Triangle(3, 4);
+        $shapes[] = new Circle(3);
+        $shapes[] = new Trapezius(2, 4, 5);
+        $shapes[] = new Cube(2);
+
+        $area = (new AreaCalculator())->calculate($shapes);
+
+        return view('home', compact('saleReport', 'area'));
     }
 
     /**

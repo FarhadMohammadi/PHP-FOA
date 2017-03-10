@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Acme\Reporting;
+namespace App\Solid\Reporting;
 
-use App\Acme\Reporting\Output\SalesOutputInterface;
+use App\Solid\Reporting\Output\SalesOutputInterface;
 use App\Repositories\SaleRepository;
 use Carbon\Carbon;
 
 /**
  * Class SalesReporter
- * @package App\Acme\Reporting
+ * @package App\Solid\Reporting
  */
 class SalesReporter
 {

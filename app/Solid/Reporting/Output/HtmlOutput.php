@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\Reporting\Output;
+namespace App\Solid\Reporting\Output;
 
 
 class HtmlOutput implements SalesOutputInterface
