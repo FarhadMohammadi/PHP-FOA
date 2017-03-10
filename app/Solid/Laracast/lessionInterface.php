@@ -1,5 +1,5 @@
 <?php
 
 interface lesson {
-    public function add();
+    public function edit();
 }
