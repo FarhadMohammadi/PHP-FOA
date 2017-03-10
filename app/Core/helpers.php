@@ -3,8 +3,8 @@
 use App\Core\App;
 use Illuminate\Support\Debug\Dumper;
 
-if (!function_exists('view')) {
-    function view($name, $data = [])
+if (!function_exists('response')) {
+    function response($name, $data = [])
     {
         extract($data);
 
