@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Acme\Reporting\Output\HtmlOutput;
-use App\Acme\Reporting\SalesReporter;
+use App\Solid\Reporting\Output\HtmlOutput;
+use App\Solid\Reporting\SalesReporter;
 use App\Repositories\SaleRepository;
 use Carbon\Carbon;
 

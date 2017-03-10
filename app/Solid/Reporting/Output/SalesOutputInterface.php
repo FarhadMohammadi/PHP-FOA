@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Acme\Reporting\Output;
+namespace App\Solid\Reporting\Output;
 
 /**
  * Interface SalesOutputInterface
- * @package App\Acme\Reporting\Output
+ * @package App\Solid\Reporting\Output
  */
 interface SalesOutputInterface
 {
