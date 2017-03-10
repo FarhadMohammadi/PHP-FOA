@@ -1,6 +1,7 @@
 <?php
 
 use App\Core\App;
+use Illuminate\Support\Debug\Dumper;
 
 if (!function_exists('view')) {
     function view($name, $data = [])
@@ -11,8 +12,8 @@ if (!function_exists('view')) {
             $name = str_replace('.', '/', $name);
         }
 
-        if (file_exists("../views/{$name}.view.php")) {
-            return require "../views/{$name}.view.php";
+        if (file_exists(__DIR__ . "/../../resources/views/{$name}.view.php")) {
+            return require __DIR__ . "/../../resources/views/{$name}.view.php";
         }
 
         throw new Exception("The {$name} view not Found.");
@@ -33,6 +34,17 @@ if (!function_exists('app')) {
             return App::getInstance();
         }
 
-        return App::getInstance()->make($abstract);
+        return (App::getInstance())->make($abstract);
+    }
+}
+
+if (!function_exists('dd')) {
+    function dd()
+    {
+        array_map(function ($x) {
+            (new Dumper())->dump($x);
+        }, func_get_args());
+
+        die(1);
     }
 }

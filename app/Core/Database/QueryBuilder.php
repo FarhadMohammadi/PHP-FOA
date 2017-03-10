@@ -6,7 +6,7 @@ class QueryBuilder
 {
     private $pdo;
 
-    public function __construct(PDO $pdo)
+    public function __construct(\PDO $pdo)
     {
         $this->pdo = $pdo;
     }
@@ -17,7 +17,7 @@ class QueryBuilder
 
         $query->execute();
 
-        return $query->fetchAll(PDO::FETCH_CLASS);
+        return $query->fetchAll(\PDO::FETCH_CLASS);
     }
 
     public function insert($table, array $paramerts)
@@ -32,7 +32,7 @@ class QueryBuilder
         try {
             $query = $this->pdo->prepare($sql);
             $query->execute($paramerts);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die("Wooops, sorry this is some thing wrong");
         }
     }

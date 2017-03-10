@@ -10,18 +10,18 @@ class Connection
 {
     /**
      * @param array $config
-     * @return PDO
+     * @return \PDO
      */
-    public static function make(array $config): PDO
+    public static function make(array $config): \PDO
     {
         try {
-            return new PDO(
+            return new \PDO(
                 $config['connection'] . "dbname=" . $config['database'],
                 $config['username'],
                 $config['password'],
                 $config['options']
             );
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die("Could not connect to database");
         }
     }
