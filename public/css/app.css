@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul {
+    background: black;
+}
+
+.navigation ul li {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.navigation ul li a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navigation ul li a:hover {
+    background: green;
+}
+
+.container {
+    margin: 20px;
+    display: block;
+    overflow: auto;
+}
+
+.pull-right {
+    float: right;
+}
+
+input[type=text] {
+    height: 30px;
+    display: block;
+    margin: 10px 0px;
+}
+
+input[type=submit] {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background: tan;
+}
+
+.error {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    background: #ca0b0b;
+    color: white;
+}
+.userList {
+    float: left;
+}
+
+.userList li {
+    padding: 10px 0px;
+}
+
+.userList li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.userList li span .delete {
+    text-decoration: none;
+    color: red;
+    border: 1px solid red;
+    margin-left: 15px;
+}
