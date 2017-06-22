@@ -16,6 +16,7 @@
     }
   },
   "require": {
-    "nesbot/carbon": "^1.22"
+    "nesbot/carbon": "^1.22",
+    "phpunit/phpunit": "^6.2"
   }
 }

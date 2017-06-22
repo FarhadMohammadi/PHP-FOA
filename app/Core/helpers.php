@@ -2,7 +2,7 @@
 
 use App\Core\App;
 
-if (!function_exists('response')) {
+if (!function_exists('view')) {
     function view($name, $data = [])
     {
         extract($data);
